@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sword Art Craft - 攻略Wiki</title>
+    <style>
+        :root {
+            --primary-bg: #0a0e14;
+            --secondary-bg: #161d26;
+            --accent-color: #00d4ff;
+            --text-color: #e0e0e0;
+            --border-color: #2a3b4d;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(90deg, #001f3f, #00d4ff);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            margin: 0;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        nav {
+            background-color: var(--secondary-bg);
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+        }
+
+        nav a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--secondary-bg);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            color: var(--accent-color);
+            margin-top: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #002b4d;
+            color: var(--accent-color);
+        }
+
+        tr:nth-child(even) {
+            background-color: #1c2631;
+        }
+
+        .info-box {
+            background-color: #001a33;
+            border: 1px solid var(--accent-color);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .quest-id {
+            font-family: monospace;
+            background: #000;
+            padding: 2px 5px;
+            color: #ffaa00;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>SWORD ART CRAFT - Database</h1>
+</header>
+
+<nav>
+    <a href="#about">概要</a>
+    <a href="#system">システム</a>
+    <a href="#quests">クエスト</a>
+    <a href="#boss">ボス情報</a>
+</nav>
+
+<div class="container">
+    <section id="about">
+        <h2>アインクラッドへようこそ</h2>
+        <p>このWikiはJava版Minecraftサーバー「Sword Art Craft (SAC)」の非公式攻略データベースです。階層攻略、スキルの習得、クエスト情報を網羅しています。</p>
+        <div class="info-box">
+            <strong>⚠️ デッドリー・ペナルティに注意！</strong><br>
+            この世界での死は大きな損失を意味します。常にHPポーション（クリスタル）をショートカットに入れておきましょう。
+        </div>
+    </section>
+
+    <section id="system">
+        <h2>主要システム</h2>
+        <h3>ソードスキル (Sword Skills)</h3>
+        <p>武器を手に持ち、特定の動作（右クリックやコンボ）を行うことで強力な技を発動します。熟練度が上がることで上位スキルが解放されます。</p>
+        
+        <h3>熟練度システム</h3>
+        <ul>
+            <li><strong>片手剣熟練度:</strong> 基本的な攻撃スキルの威力に影響。</li>
+            <li><strong>防御熟練度:</strong> 盾でのガード成功率や被ダメージ軽減に影響。</li>
+            <li><strong>生産熟練度:</strong> 鍛冶や料理の成功率に影響。</li>
+        </ul>
+    </section>
+
+    <section id="quests">
+        <h2>初期クエストデータ</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>クエスト名</th>
+                    <th>対象Mob</th>
+                    <th>必要数</th>
+                    <th>報酬</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>はじめての討伐依頼</td>
+                    <td>フレンジー・ボア</td>
+                    <td>10</td>
+                    <td>ニンジン x7 / 90 EXP</td>
+                </tr>
+                <tr>
+                    <td>凍てつく森の脅威</td>
+                    <td>ダイヤウルフ</td>
+                    <td>10</td>
+                    <td>ニンジン x7 / 90 EXP</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="boss">
+        <h2>階層ボス情報</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>層</th>
+                    <th>ボス名称</th>
+                    <th>弱点</th>
+                    <th>ドロップ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>ザ・グリームアイズ</td>
+                    <td>斬撃</td>
+                    <td>煌めく魔石</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>アステリオス</td>
+                    <td>刺突</td>
+                    <td>牛王の角</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<footer>
+    &copy; 2026 Sword Art Craft Fan Wiki. All rights reserved.
+</footer>
+
+</body>
+</html>
