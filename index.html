@@ -100,8 +100,7 @@
             background-color: #1c2631;
         }
 
-        /* アイテムIDの見た目：黒背景に白文字 */
-        .quest-id, .item-id {
+        .item-id, .skill-name {
             font-family: 'Consolas', 'Monaco', monospace;
             background: #000000;
             padding: 4px 8px;
@@ -111,6 +110,14 @@
             font-size: 0.95em;
             border: 1px solid #444;
             display: inline-block;
+        }
+
+        .info-box {
+            background-color: #001a33;
+            border: 1px solid var(--accent-color);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
         }
 
         footer {
@@ -136,10 +143,8 @@
 
 <nav>
     <a href="#about">概要</a>
-    <a href="#system">システム</a>
     <a href="#item-wiki">アイテム図鑑</a>
-    <a href="#quests">クエスト</a>
-    <a href="#boss">ボス情報</a>
+    <a href="#system">ソードスキル</a>
 </nav>
 
 <div class="container">
@@ -266,72 +271,48 @@
     </section>
 
     <section id="system">
-        <h2>主要システム</h2>
-        <h3>ソードスキル (Sword Skills)</h3>
-        <p>武器を手に持ち、特定の動作を行うことで強力な技を発動します。</p>
+        <h2>⚔️ ソードスキル (Sword Skills)</h2>
+        <p>特定の武器を使用し、システムアシストを介して発動する強力な攻撃技です。</p>
         
-        <h3>熟練度システム</h3>
-        <ul>
-            <li><strong>片手剣熟練度:</strong> 攻撃威力に影響。</li>
-            <li><strong>防御熟練度:</strong> 被ダメ軽減に影響。</li>
-        </ul>
-    </section>
-
-    <section id="quests">
-        <h2>初期クエストデータ</h2>
+        <h3>片手剣スキル一覧</h3>
         <table>
             <thead>
                 <tr>
-                    <th>クエスト名</th>
-                    <th>対象Mob</th>
-                    <th>必要数</th>
-                    <th>報酬</th>
+                    <th>スキル名</th>
+                    <th>タイプ</th>
+                    <th>特徴</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>はじめての討伐依頼</td>
-                    <td>フレンジー・ボア</td>
-                    <td>10</td>
-                    <td>ニンジン x7 / 90 EXP</td>
+                    <td><span class="skill-name">バーチカル</span></td>
+                    <td>単発（垂直）</td>
+                    <td>上段から振り下ろす基本技。</td>
                 </tr>
                 <tr>
-                    <td>凍てつく森の脅威</td>
-                    <td>ダイヤウルフ</td>
-                    <td>10</td>
-                    <td>ニンジン x7 / 90 EXP</td>
+                    <td><span class="skill-name">ホリゾンタル</span></td>
+                    <td>単発（水平）</td>
+                    <td>横一閃に薙ぎ払う基本技。</td>
+                </tr>
+                <tr>
+                    <td><span class="skill-name">バーチカル・アーク</span></td>
+                    <td>2連撃</td>
+                    <td>V字を描くように垂直に切り返す。</td>
+                </tr>
+                <tr>
+                    <td><span class="skill-name">ホリゾンタル・アーク</span></td>
+                    <td>2連撃</td>
+                    <td>水平に切り返し、広範囲を攻撃する。</td>
+                </tr>
+                <tr>
+                    <td><span class="skill-name">ホリゾンタル・スクエア</span></td>
+                    <td>4連撃</td>
+                    <td>水平に四角形を描くように高速で斬りつける。</td>
                 </tr>
             </tbody>
         </table>
     </section>
 
-    <section id="boss">
-        <h2>階層ボス情報</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>層</th>
-                    <th>ボス名称</th>
-                    <th>弱点</th>
-                    <th>ドロップ</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>ザ・グリームアイズ</td>
-                    <td>斬撃</td>
-                    <td>煌めく魔石</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>アステリオス</td>
-                    <td>刺突</td>
-                    <td>牛王の角</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
 </div>
 
 <footer>
