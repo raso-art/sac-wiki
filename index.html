@@ -11,12 +11,6 @@
             --accent-color: #00d4ff;
             --text-color: #e0e0e0;
             --border-color: #2a3b4d;
-            /* ランク別カラー */
-            --rank-s: #ff4444;
-            --rank-a: #ffaa00;
-            --rank-b: #ff00ff;
-            --rank-c: #00aaff;
-            --rank-d: #aaaaaa;
         }
 
         body {
@@ -106,29 +100,18 @@
             background-color: #1c2631;
         }
 
-        .info-box {
-            background-color: #001a33;
-            border: 1px solid var(--accent-color);
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-
+        /* アイテムIDの見た目：黒背景に白文字 */
         .quest-id, .item-id {
-            font-family: monospace;
-            background: #000;
-            padding: 2px 5px;
-            color: #ffaa00;
-            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            background: #000000;
+            padding: 4px 8px;
+            color: #ffffff;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.95em;
+            border: 1px solid #444;
+            display: inline-block;
         }
-
-        /* ランク用スタイル */
-        .rank { font-weight: bold; }
-        .s { color: var(--rank-s); }
-        .a { color: var(--rank-a); }
-        .b { color: var(--rank-b); }
-        .c { color: var(--rank-c); }
-        .d { color: var(--rank-d); }
 
         footer {
             text-align: center;
@@ -204,7 +187,6 @@
                     <th>ID</th>
                     <th>CMD</th>
                     <th>アイテム名</th>
-                    <th>ランク</th>
                     <th>ベース素材</th>
                 </tr>
             </thead>
@@ -214,7 +196,6 @@
                     <td><span class="item-id">healing_potion_s</span></td>
                     <td>0</td>
                     <td>回復薬（小）</td>
-                    <td><span class="rank c">C</span></td>
                     <td>POTION</td>
                 </tr>
                 <tr>
@@ -222,7 +203,6 @@
                     <td><span class="item-id">ragout_rabbit_meat</span></td>
                     <td>501</td>
                     <td>ラグー・ラビットの肉</td>
-                    <td><span class="rank s">S</span></td>
                     <td>COOKED_BEEF</td>
                 </tr>
                 <tr>
@@ -230,7 +210,6 @@
                     <td><span class="item-id">boar_meat</span></td>
                     <td>0</td>
                     <td>ボアの肉</td>
-                    <td><span class="rank d">D</span></td>
                     <td>PORKCHOP</td>
                 </tr>
                 <tr>
@@ -238,7 +217,6 @@
                     <td><span class="item-id">boar_fang</span></td>
                     <td>0</td>
                     <td>ボアの牙</td>
-                    <td><span class="rank b">B</span></td>
                     <td>IRON_NUGGET</td>
                 </tr>
                 <tr>
@@ -246,7 +224,6 @@
                     <td><span class="item-id">red_petals</span></td>
                     <td>0</td>
                     <td>ネペントの花弁</td>
-                    <td><span class="rank d">D</span></td>
                     <td>RED_DYE</td>
                 </tr>
                 <tr>
@@ -254,7 +231,6 @@
                     <td><span class="item-id">nepenthes_ovule</span></td>
                     <td>0</td>
                     <td>ネペントの胚珠</td>
-                    <td><span class="rank a">A</span></td>
                     <td>APPLE</td>
                 </tr>
                 <tr>
@@ -262,7 +238,6 @@
                     <td><span class="item-id">axe_fragment</span></td>
                     <td>0</td>
                     <td>斧の破片</td>
-                    <td><span class="rank d">D</span></td>
                     <td>FLINT</td>
                 </tr>
                 <tr>
@@ -270,7 +245,6 @@
                     <td><span class="item-id">cows_milk</span></td>
                     <td>0</td>
                     <td>雌牛のミルク</td>
-                    <td><span class="rank b">B</span></td>
                     <td>APPLE</td>
                 </tr>
                 <tr>
@@ -278,7 +252,6 @@
                     <td><span class="item-id">carrot</span></td>
                     <td>0</td>
                     <td>普通のにんじん</td>
-                    <td><span class="rank d">D</span></td>
                     <td>CARROT</td>
                 </tr>
                 <tr>
@@ -286,7 +259,6 @@
                     <td><span class="item-id">boar_steak</span></td>
                     <td>0</td>
                     <td>ボアのステーキ</td>
-                    <td><span class="rank d">D</span></td>
                     <td>COOKED_PORKCHOP</td>
                 </tr>
             </tbody>
