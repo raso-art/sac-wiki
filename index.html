@@ -101,12 +101,12 @@
             background-color: #1c2631;
         }
 
-        /* アイテムID・ランク・スキル名の見た目 */
-        .item-id, .skill-name, .rank-label {
+        /* ID・ランク・スキル名の共通スタイル（黒背景・白文字） */
+        .item-id, .skill-name, .rank-label, .mob-id {
             font-family: 'Consolas', 'Monaco', monospace;
             background: #000000;
             padding: 4px 8px;
-            color: #ffffff; /* 白文字 */
+            color: #ffffff;
             border-radius: 4px;
             font-weight: bold;
             font-size: 0.95em;
@@ -120,6 +120,11 @@
             padding: 15px;
             border-radius: 5px;
             margin: 20px 0;
+        }
+
+        .lv-badge {
+            color: #ffaa00;
+            font-weight: bold;
         }
 
         footer {
@@ -146,6 +151,7 @@
 <nav>
     <a href="#about">概要</a>
     <a href="#item-wiki">アイテム図鑑</a>
+    <a href="#mob-wiki">モンスター図鑑</a>
     <a href="#system">ソードスキル</a>
 </nav>
 
@@ -155,39 +161,52 @@
         <p>このWikiはJava版Minecraftサーバー「Sword Art Craft (SAC)」の非公式攻略データベースです。</p>
         <div class="info-box">
             <strong>⚠️ デッドリー・ペナルティに注意！</strong><br>
-            死んだら全て無くなります。　
-            常にHPポーション（クリスタル）をショートカットに入れておきましょう。
-            これはゲームであってゲームではない。
+            この世界での死は大きな損失を意味します。常にHPポーション（クリスタル）をショートカットに入れておきましょう。
         </div>
     </section>
 
-    <section id="item-wiki">
-        <h2>⚔️ アイテム図鑑</h2>
-
-        <h3>アイテムカテゴリ</h3>
+    <section id="mob-wiki">
+        <h2>👾 モンスター図鑑</h2>
         <table>
             <thead>
                 <tr>
-                    <th>カテゴリ名</th>
-                    <th>引数の効果</th>
+                    <th>名称 (ID)</th>
+                    <th>Lv / HP / ATK</th>
+                    <th>特徴</th>
+                    <th>ドロップ情報</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>回復</td>
-                    <td><details><summary>詳細表示</summary>1.回復量<br>2.回復時間(予定)</details></td>
+                    <td><strong>Frenzy Boar</strong><br><span class="mob-id">frenzy_boar</span></td>
+                    <td><span class="lv-badge">Lv.1</span><br>HP: 160<br>ATK: 70</td>
+                    <td>突進(dash)を仕掛けてくるアインクラッド最初の脅威。</td>
+                    <td>ボアの肉 (60%)<br>ボアの牙 (5%)</td>
                 </tr>
                 <tr>
-                    <td>素材</td>
-                    <td><details><summary>詳細表示</summary>1.なし(未定)<br>2.なし(未定)</details></td>
+                    <td><strong>Little Nepenthes</strong><br><span class="mob-id">little_nepenthes</span></td>
+                    <td><span class="lv-badge">Lv.4</span><br>HP: 240<br>ATK: 260</td>
+                    <td>攻撃力が高い植物モンスター。突進に注意。</td>
+                    <td>ネペントの花弁 (50%)<br>ネペントの胚珠 (1.5%)</td>
                 </tr>
                 <tr>
-                    <td>食料</td>
-                    <td><details><summary>詳細表示</summary>1.回復量<br>2.隠し満腹度</details></td>
+                    <td><strong>Kobold Henchman</strong><br><span class="mob-id">kobold_henchman</span></td>
+                    <td><span class="lv-badge">Lv.7</span><br>HP: 400<br>ATK: 450</td>
+                    <td>素早い動きで距離を詰めてくる亜人型モンスター。</td>
+                    <td>斧の破片 (50%)<br>雌牛のミルク (3%)</td>
+                </tr>
+                <tr>
+                    <td><strong>Dire Wolf</strong><br><span class="mob-id">dire_wolf</span></td>
+                    <td><span class="lv-badge">Lv.10</span><br>HP: 480<br>ATK: 500</td>
+                    <td>高い移動速度と攻撃力を持つ黒狼。</td>
+                    <td>-</td>
                 </tr>
             </tbody>
         </table>
+    </section>
 
+    <section id="item-wiki">
+        <h2>⚔️ アイテム図鑑</h2>
         <h3>アイテムリスト</h3>
         <table>
             <thead>
@@ -276,8 +295,6 @@
 
     <section id="system">
         <h2>⚔️ ソードスキル (Sword Skills)</h2>
-        <p>特定の武器を使用し、システムアシストを介して発動する強力な攻撃技です。</p>
-        
         <h3>片手剣スキル一覧</h3>
         <table>
             <thead>
@@ -316,7 +333,6 @@
             </tbody>
         </table>
     </section>
-
 </div>
 
 <footer>
@@ -325,7 +341,3 @@
 
 </body>
 </html>
-
-
-
-
