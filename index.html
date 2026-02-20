@@ -57,7 +57,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 20px auto;
             padding: 20px;
             background-color: var(--secondary-bg);
@@ -89,6 +89,7 @@
             border: 1px solid var(--border-color);
             padding: 12px;
             text-align: left;
+            font-size: 0.9em;
         }
 
         th {
@@ -100,11 +101,12 @@
             background-color: #1c2631;
         }
 
-        .item-id, .skill-name {
+        /* アイテムID・ランク・スキル名の見た目 */
+        .item-id, .skill-name, .rank-label {
             font-family: 'Consolas', 'Monaco', monospace;
             background: #000000;
             padding: 4px 8px;
-            color: #ffffff;
+            color: #ffffff; /* 白文字 */
             border-radius: 4px;
             font-weight: bold;
             font-size: 0.95em;
@@ -188,83 +190,83 @@
         <table>
             <thead>
                 <tr>
-                    <th>カテゴリ</th>
                     <th>ID</th>
-                    <th>CMD</th>
                     <th>アイテム名</th>
-                    <th>ベース素材</th>
+                    <th>ランク</th>
+                    <th>説明</th>
+                    <th>ベース素材 (CMD)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>回復</td>
                     <td><span class="item-id">healing_potion_s</span></td>
-                    <td>0</td>
                     <td>回復薬（小）</td>
-                    <td>POTION</td>
+                    <td><span class="rank-label">C</span></td>
+                    <td>体力を20ポイント回復する</td>
+                    <td>POTION (0)</td>
                 </tr>
                 <tr>
-                    <td>素材</td>
                     <td><span class="item-id">ragout_rabbit_meat</span></td>
-                    <td>501</td>
                     <td>ラグー・ラビットの肉</td>
-                    <td>COOKED_BEEF</td>
+                    <td><span class="rank-label">S</span></td>
+                    <td>超高級食材</td>
+                    <td>COOKED_BEEF (501)</td>
                 </tr>
                 <tr>
-                    <td>素材</td>
                     <td><span class="item-id">boar_meat</span></td>
-                    <td>0</td>
-                    <td>ボアの肉</td>
-                    <td>PORKCHOP</td>
+                    <td>&lt;ボアの肉&gt;</td>
+                    <td><span class="rank-label">D</span></td>
+                    <td>焼くと食べられそうな肉</td>
+                    <td>PORKCHOP (0)</td>
                 </tr>
                 <tr>
-                    <td>素材</td>
                     <td><span class="item-id">boar_fang</span></td>
-                    <td>0</td>
-                    <td>ボアの牙</td>
-                    <td>IRON_NUGGET</td>
+                    <td>&lt;ボアの牙&gt;</td>
+                    <td><span class="rank-label">B</span></td>
+                    <td>ボアのレアドロップ 硬くて鋭い牙</td>
+                    <td>IRON_NUGGET (0)</td>
                 </tr>
                 <tr>
-                    <td>素材</td>
                     <td><span class="item-id">red_petals</span></td>
-                    <td>0</td>
-                    <td>ネペントの花弁</td>
-                    <td>RED_DYE</td>
+                    <td>&lt;ネペントの花弁&gt;</td>
+                    <td><span class="rank-label">D</span></td>
+                    <td>赤い花の花弁</td>
+                    <td>RED_DYE (0)</td>
                 </tr>
                 <tr>
-                    <td>素材</td>
                     <td><span class="item-id">nepenthes_ovule</span></td>
-                    <td>0</td>
-                    <td>ネペントの胚珠</td>
-                    <td>APPLE</td>
+                    <td>&lt;ネペントの胚珠&gt;</td>
+                    <td><span class="rank-label">A</span></td>
+                    <td>ネペントのレアドロップ 赤い胚珠</td>
+                    <td>APPLE (0)</td>
                 </tr>
                 <tr>
-                    <td>素材</td>
                     <td><span class="item-id">axe_fragment</span></td>
-                    <td>0</td>
-                    <td>斧の破片</td>
-                    <td>FLINT</td>
+                    <td>&lt;斧の破片&gt;</td>
+                    <td><span class="rank-label">D</span></td>
+                    <td>モンスターの斧の破片</td>
+                    <td>FLINT (0)</td>
                 </tr>
                 <tr>
-                    <td>素材</td>
                     <td><span class="item-id">cows_milk</span></td>
-                    <td>0</td>
-                    <td>雌牛のミルク</td>
-                    <td>APPLE</td>
+                    <td>&lt;雌牛のミルク&gt;</td>
+                    <td><span class="rank-label">B</span></td>
+                    <td>コボルドが連れていた雌牛のミルク</td>
+                    <td>APPLE (0)</td>
                 </tr>
                 <tr>
-                    <td>素材</td>
                     <td><span class="item-id">carrot</span></td>
-                    <td>0</td>
-                    <td>普通のにんじん</td>
-                    <td>CARROT</td>
+                    <td>&lt;普通のにんじん&gt;</td>
+                    <td><span class="rank-label">D</span></td>
+                    <td>採れたてのにんじん</td>
+                    <td>CARROT (0)</td>
                 </tr>
                 <tr>
-                    <td>食料</td>
                     <td><span class="item-id">boar_steak</span></td>
-                    <td>0</td>
-                    <td>ボアのステーキ</td>
-                    <td>COOKED_PORKCHOP</td>
+                    <td>&lt;ボアのステーキ&gt;</td>
+                    <td><span class="rank-label">D</span></td>
+                    <td>ボアの肉を焼いたもの 少し硬い</td>
+                    <td>COOKED_PORKCHOP (0)</td>
                 </tr>
             </tbody>
         </table>
@@ -302,7 +304,7 @@
                 <tr>
                     <td><span class="skill-name">ホリゾンタル・アーク</span></td>
                     <td>2連撃</td>
-                    <td>2連撃左右往復斬り。</td>
+                    <td>2連撃 左右往復斬り。</td>
                 </tr>
                 <tr>
                     <td><span class="skill-name">ホリゾンタル・スクエア</span></td>
@@ -321,4 +323,5 @@
 
 </body>
 </html>
+
 
