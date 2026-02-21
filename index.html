@@ -11,6 +11,7 @@
             --accent-color: #00d4ff;
             --text-color: #e0e0e0;
             --border-color: #2a3b4d;
+            --sidebar-width: 240px;
         }
 
         body {
@@ -20,98 +21,142 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
+        /* ヘッダー */
         header {
             background: linear-gradient(90deg, #001f3f, #00d4ff);
-            padding: 20px;
-            text-align: center;
+            padding: 15px 20px;
+            text-align: left;
             box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            z-index: 1001;
         }
 
         header h1 {
             margin: 0;
-            letter-spacing: 3px;
+            font-size: 1.5em;
+            letter-spacing: 2px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
+        /* メインレイアウト（サイドバー + コンテンツ） */
+        .wrapper {
+            display: flex;
+            flex: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* 左サイドバー */
         nav {
+            width: var(--sidebar-width);
             background-color: var(--secondary-bg);
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            padding: 20px;
+            height: calc(100vh - 60px);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        nav h4 {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--accent-color);
+            margin: 20px 0 10px;
+            padding-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-bottom: 8px;
         }
 
         nav a {
-            color: var(--accent-color);
+            color: var(--text-color);
             text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
+            font-size: 0.9em;
+            display: block;
+            padding: 5px 0;
+            transition: color 0.2s;
         }
 
         nav a:hover {
+            color: var(--accent-color);
             text-decoration: underline;
         }
 
+        /* メインコンテンツ */
+        main {
+            flex: 1;
+            padding: 30px;
+            background-color: var(--primary-bg);
+        }
+
         .container {
-            max-width: 1100px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: var(--secondary-bg);
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         h2 {
             border-left: 5px solid var(--accent-color);
             padding-left: 15px;
             color: var(--accent-color);
-            margin-top: 40px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            background: rgba(0, 212, 255, 0.05);
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
 
         h3 {
             color: var(--accent-color);
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 5px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
+            background-color: var(--secondary-bg);
         }
 
         th, td {
             border: 1px solid var(--border-color);
             padding: 12px;
             text-align: left;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
 
         th {
             background-color: #002b4d;
             color: var(--accent-color);
+            white-space: nowrap;
         }
 
         tr:nth-child(even) {
             background-color: #1c2631;
         }
 
-        /* ID・ランク・スキル名の共通スタイル（黒背景・白文字） */
         .item-id, .skill-name, .rank-label, .mob-id {
-            font-family: 'Consolas', 'Monaco', monospace;
-            background: #000000;
-            padding: 4px 8px;
-            color: #ffffff;
+            font-family: 'Consolas', monospace;
+            background: #000;
+            padding: 2px 6px;
+            color: #fff;
             border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.95em;
+            font-size: 0.9em;
             border: 1px solid #444;
-            display: inline-block;
         }
 
         .info-box {
@@ -120,6 +165,7 @@
             padding: 15px;
             border-radius: 5px;
             margin: 20px 0;
+            font-size: 0.9em;
         }
 
         .lv-badge {
@@ -132,6 +178,14 @@
             padding: 20px;
             font-size: 0.8em;
             color: #666;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--secondary-bg);
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .wrapper { flex-direction: column; }
+            nav { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border-color); }
         }
     </style>
 </head>
@@ -141,222 +195,131 @@
     <h1>SWORD ART CRAFT - Database</h1>
 </header>
 
-<nav>
-    <a href="#about">概要</a>
-    <a href="#item-wiki">アイテム図鑑</a>
-    <a href="#mob-wiki">モンスター図鑑</a>
-    <a href="#system">ソードスキル</a>
-</nav>
+<div class="wrapper">
+    <nav>
+        <h4>メニュー</h4>
+        <ul>
+            <li><a href="#about">トップページ</a></li>
+            <li><a href="#">初心者ガイド</a></li>
+            <li><a href="#">よくある質問</a></li>
+        </ul>
 
-<div class="container">
-    <section id="about">
-        <h2>アインクラッドへようこそ</h2>
-        <p>このWikiはJava版Minecraftサーバー「Sword Art Craft (SAC)」の非公式攻略データベースです。</p>
-        <div class="info-box">
-            <strong>⚠️ デッドリー・ペナルティに注意！</strong><br>
-            この世界での死は全て失います。<br>
-            常に回復薬をインベントリに入れておきましょう。<br>
-            これはゲームであってゲームではない。
+        <h4>図鑑・データ</h4>
+        <ul>
+            <li><a href="#mob-wiki">モンスター図鑑</a></li>
+            <li><a href="#item-wiki">アイテム図鑑</a></li>
+            <li><a href="#system">ソードスキル</a></li>
+        </ul>
+
+        <h4>武器種別スキル</h4>
+        <ul>
+            <li><a href="#system-sword">┗ 片手剣</a></li>
+            <li><a href="#system-rapier">┗ 細剣</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section id="about">
+                <h2>アインクラッドへようこそ</h2>
+                <p>このWikiはJava版Minecraftサーバー「Sword Art Craft (SAC)」の非公式攻略データベースです。</p>
+                <div class="info-box">
+                    <strong>⚠️ デッドリー・ペナルティに注意！</strong><br>
+                    この世界での死は全て失います。常に回復薬をインベントリに入れておきましょう。<br>
+                    これはゲームであって、しかし遊びではない。
+                </div>
+            </section>
+
+            <section id="mob-wiki">
+                <h2>👾 モンスター図鑑</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>名称 (ID)</th>
+                            <th>Lv / HP / ATK</th>
+                            <th>特徴</th>
+                            <th>ドロップ情報</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>フレンジーボア</strong><br><span class="mob-id">frenzy_boar</span></td>
+                            <td><span class="lv-badge">Lv.1</span><br>HP: 160<br>ATK: 70</td>
+                            <td>最初の脅威。突進(dash)に注意。</td>
+                            <td>ボアの肉 (60%)<br>ボアの牙 (5%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>リトルネペント</strong><br><span class="mob-id">little_nepenthes</span></td>
+                            <td><span class="lv-badge">Lv.4</span><br>HP: 240<br>ATK: 260</td>
+                            <td>攻撃力が高い植物モンスター。</td>
+                            <td>ネペントの花弁 (50%)<br>ネペントの胚珠 (1.5%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>コボルドヘンチマン</strong><br><span class="mob-id">kobold_henchman</span></td>
+                            <td><span class="lv-badge">Lv.7</span><br>HP: 400<br>ATK: 450</td>
+                            <td>素早い動きで距離を詰める亜人。</td>
+                            <td>斧の破片 (50%)<br>雌牛のミルク (3%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ダイヤウルフ</strong><br><span class="mob-id">dire_wolf</span></td>
+                            <td><span class="lv-badge">Lv.10</span><br>HP: 480<br>ATK: 500</td>
+                            <td>高い速度を持つ黒狼。</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="item-wiki">
+                <h2>⚔️ アイテム図鑑</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>アイテム名</th>
+                            <th>ランク</th>
+                            <th>説明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="item-id">healing_potion_s</span></td><td>回復薬（小）</td><td><span class="rank-label">C</span></td><td>HPを20回復</td></tr>
+                        <tr><td><span class="item-id">ragout_rabbit_meat</span></td><td>ラグー・ラビットの肉</td><td><span class="rank-label">S</span></td><td>超高級食材</td></tr>
+                        <tr><td><span class="item-id">boar_meat</span></td><td>&lt;ボアの肉&gt;</td><td><span class="rank-label">D</span></td><td>焼くと食べられそう</td></tr>
+                        <tr><td><span class="item-id">boar_fang</span></td><td>&lt;ボアの牙&gt;</td><td><span class="rank-label">B</span></td><td>硬くて鋭い牙</td></tr>
+                        <tr><td><span class="item-id">nepenthes_ovule</span></td><td>&lt;ネペントの胚珠&gt;</td><td><span class="rank-label">A</span></td><td>赤い胚珠</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="system">
+                <h2>⚔️ ソードスキル (Sword Skills)</h2>
+                
+                <h3 id="system-sword">片手剣スキル一覧</h3>
+                <table>
+                    <thead>
+                        <tr><th>スキル名</th><th>タイプ</th><th>特徴</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="skill-name">バーチカル</span></td><td>単発（垂直）</td><td>垂直斬り。</td></tr>
+                        <tr><td><span class="skill-name">ホリゾンタル</span></td><td>単発（水平）</td><td>横斬り。</td></tr>
+                        <tr><td><span class="skill-name">バーチカル・アーク</span></td><td>2連撃</td><td>縦斬り2連。</td></tr>
+                    </tbody>
+                </table>
+
+                <h3 id="system-rapier">細剣スキル一覧</h3>
+                <table>
+                    <thead>
+                        <tr><th>スキル名</th><th>タイプ</th><th>特徴</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="skill-name">リニアー</span></td><td>単発（突進）</td><td>出が非常に速い突き技。</td></tr>
+                        <tr><td><span class="skill-name">パラレル・スティング</span></td><td>2連撃</td><td>二度の突きを放つ。</td></tr>
+                        <tr><td><span class="skill-name">スターク</span></td><td>単発（強撃）</td><td>威力特化の鋭い突き。</td></tr>
+                    </tbody>
+                </table>
+            </section>
         </div>
-    </section>
-
-    <section id="mob-wiki">
-        <h2>👾 モンスター図鑑</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>名称 (ID)</th>
-                    <th>Lv / HP / ATK</th>
-                    <th>特徴</th>
-                    <th>ドロップ情報</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>フレンジーボア</strong><br><span class="mob-id">frenzy_boar</span></td>
-                    <td><span class="lv-badge">Lv.1</span><br>HP: 160<br>ATK: 70</td>
-                    <td>突進(dash)を仕掛けてくるアインクラッド最初の脅威。</td>
-                    <td>ボアの肉 (60%)<br>ボアの牙 (5%)</td>
-                </tr>
-                <tr>
-                    <td><strong>リトルネペント</strong><br><span class="mob-id">little_nepenthes</span></td>
-                    <td><span class="lv-badge">Lv.4</span><br>HP: 240<br>ATK: 260</td>
-                    <td>攻撃力が高い植物モンスター。突進に注意。</td>
-                    <td>ネペントの花弁 (50%)<br>ネペントの胚珠 (1.5%)</td>
-                </tr>
-                <tr>
-                    <td><strong>コボルドヘンチマン</strong><br><span class="mob-id">kobold_henchman</span></td>
-                    <td><span class="lv-badge">Lv.7</span><br>HP: 400<br>ATK: 450</td>
-                    <td>素早い動きで距離を詰めてくる亜人型モンスター。</td>
-                    <td>斧の破片 (50%)<br>雌牛のミルク (3%)</td>
-                </tr>
-                <tr>
-                    <td><strong>ダイヤウルフ</strong><br><span class="mob-id">dire_wolf</span></td>
-                    <td><span class="lv-badge">Lv.10</span><br>HP: 480<br>ATK: 500</td>
-                    <td>高い移動速度と攻撃力を持つ黒狼。</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section id="item-wiki">
-        <h2>⚔️ アイテム図鑑</h2>
-        <h3>アイテムリスト</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>アイテム名</th>
-                    <th>ランク</th>
-                    <th>説明</th>
-                    <th>ベース素材 (CMD)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="item-id">healing_potion_s</span></td>
-                    <td>回復薬（小）</td>
-                    <td><span class="rank-label">C</span></td>
-                    <td>体力を20ポイント回復する</td>
-                    <td>POTION (0)</td>
-                </tr>
-                <tr>
-                    <td><span class="item-id">ragout_rabbit_meat</span></td>
-                    <td>ラグー・ラビットの肉</td>
-                    <td><span class="rank-label">S</span></td>
-                    <td>超高級食材</td>
-                    <td>COOKED_BEEF (501)</td>
-                </tr>
-                <tr>
-                    <td><span class="item-id">boar_meat</span></td>
-                    <td>&lt;ボアの肉&gt;</td>
-                    <td><span class="rank-label">D</span></td>
-                    <td>焼くと食べられそうな肉</td>
-                    <td>PORKCHOP (0)</td>
-                </tr>
-                <tr>
-                    <td><span class="item-id">boar_fang</span></td>
-                    <td>&lt;ボアの牙&gt;</td>
-                    <td><span class="rank-label">B</span></td>
-                    <td>ボアのレアドロップ 硬くて鋭い牙</td>
-                    <td>IRON_NUGGET (0)</td>
-                </tr>
-                <tr>
-                    <td><span class="item-id">red_petals</span></td>
-                    <td>&lt;ネペントの花弁&gt;</td>
-                    <td><span class="rank-label">D</span></td>
-                    <td>赤い花の花弁</td>
-                    <td>RED_DYE (0)</td>
-                </tr>
-                <tr>
-                    <td><span class="item-id">nepenthes_ovule</span></td>
-                    <td>&lt;ネペントの胚珠&gt;</td>
-                    <td><span class="rank-label">A</span></td>
-                    <td>ネペントのレアドロップ 赤い胚珠</td>
-                    <td>APPLE (0)</td>
-                </tr>
-                <tr>
-                    <td><span class="item-id">axe_fragment</span></td>
-                    <td>&lt;斧の破片&gt;</td>
-                    <td><span class="rank-label">D</span></td>
-                    <td>モンスターの斧の破片</td>
-                    <td>FLINT (0)</td>
-                </tr>
-                <tr>
-                    <td><span class="item-id">cows_milk</span></td>
-                    <td>&lt;雌牛のミルク&gt;</td>
-                    <td><span class="rank-label">B</span></td>
-                    <td>コボルドが連れていた雌牛のミルク</td>
-                    <td>APPLE (0)</td>
-                </tr>
-                <tr>
-                    <td><span class="item-id">carrot</span></td>
-                    <td>&lt;普通のにんじん&gt;</td>
-                    <td><span class="rank-label">D</span></td>
-                    <td>採れたてのにんじん</td>
-                    <td>CARROT (0)</td>
-                </tr>
-                <tr>
-                    <td><span class="item-id">boar_steak</span></td>
-                    <td>&lt;ボアのステーキ&gt;</td>
-                    <td><span class="rank-label">D</span></td>
-                    <td>ボアの肉を焼いたもの 少し硬い</td>
-                    <td>COOKED_PORKCHOP (0)</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <section id="system">
-        <h2>⚔️ ソードスキル (Sword Skills)</h2>
-        
-        <h3>片手剣スキル一覧</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>スキル名</th>
-                    <th>タイプ</th>
-                    <th>特徴</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="skill-name">バーチカル</span></td>
-                    <td>単発（垂直）</td>
-                    <td>単発 垂直斬り。</td>
-                </tr>
-                <tr>
-                    <td><span class="skill-name">ホリゾンタル</span></td>
-                    <td>単発（水平）</td>
-                    <td>単発 横斬り。</td>
-                </tr>
-                <tr>
-                    <td><span class="skill-name">バーチカル・アーク</span></td>
-                    <td>2連撃</td>
-                    <td>2連撃 縦斬り。</td>
-                </tr>
-                <tr>
-                    <td><span class="skill-name">ホリゾンタル・アーク</span></td>
-                    <td>2連撃</td>
-                    <td>2連撃 左右往復斬り。</td>
-                </tr>
-                <tr>
-                    <td><span class="skill-name">ホリゾンタル・スクエア</span></td>
-                    <td>4連撃</td>
-                    <td>4連撃 水平斬り。</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>細剣スキル一覧</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>スキル名</th>
-                    <th>タイプ</th>
-                    <th>特徴</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="skill-name">リニア</span></td>
-                    <td>単発</td>
-                    <td>単発 中段突き。</td>
-                </tr>
-                <tr>
-                    <td><span class="skill-name">スターク</span></td>
-                    <td>単発</td>
-                    <td>範囲斬り。</td>
-                </tr>
-                <tr>
-                    <td><span class="skill-name">パラレルスティング</span></td>
-                    <td>2連撃</td>
-                    <td>2連撃中段突き。</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+    </main>
 </div>
 
 <footer>
@@ -365,6 +328,4 @@
 
 </body>
 </html>
-
-
 
